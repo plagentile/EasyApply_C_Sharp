@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from '../models/user';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -11,12 +9,9 @@ import { AccountService } from '../services/account.service';
 export class NavComponent implements OnInit {
 
   model: any = {}
-  
-  currentUser$: Observable<User> = this.accountService.currentUser$;
 
-  constructor(private accountService: AccountService) {
-
-   }
+  constructor(public accountService: AccountService) {
+  }
 
   ngOnInit(): void {
   }
