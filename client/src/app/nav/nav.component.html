@@ -1,15 +1,17 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container">
             <a class="navbar-brand" href="#">Easy Apply</a>
-              <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="accountService.currentUser$ | async">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="(accountService.currentUser$ | async)">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Resource Center</a>
+              </li>
+            </ul>
+              <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="(accountService.currentUser$ | async)===null">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" href="#">Terms Of Service</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Settings</a>
                 </li>
               </ul>
 

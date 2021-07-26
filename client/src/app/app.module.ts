@@ -10,13 +10,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { HumanResourcesComponent } from './hr/human-resources/human-resources.component';
+import { MakeJobComponent } from './hr/make-job/make-job.component';
+import { JobListsComponent } from './hr/job-lists/job-lists.component';
+import { AboutComponent } from './info/about/about.component';
+import { TosComponent } from './info/tos/tos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    HumanResourcesComponent,
+    MakeJobComponent,
+    JobListsComponent,
+    AboutComponent,
+    TosComponent
   ],
   imports: [
     BrowserModule,
