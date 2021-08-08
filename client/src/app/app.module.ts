@@ -8,26 +8,30 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { HumanResourcesComponent } from './hr/human-resources/human-resources.component';
 import { MakeJobComponent } from './hr/make-job/make-job.component';
 import { JobListsComponent } from './hr/job-lists/job-lists.component';
 import { AboutComponent } from './info/about/about.component';
 import { TosComponent } from './info/tos/tos.component';
+import { UnknownHomeComponent } from './home/unknown-home/unknown-home.component';
+import { CorporationHomeComponent } from './home/corporation-home/corporation-home.component';
+import { ApplicantHomeComponent } from './home/applicant-home/applicant-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent,
     RegisterComponent,
     HumanResourcesComponent,
     MakeJobComponent,
     JobListsComponent,
     AboutComponent,
-    TosComponent
-  ],
+    TosComponent,
+    UnknownHomeComponent,
+    CorporationHomeComponent,
+    ApplicantHomeComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
