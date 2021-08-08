@@ -17,6 +17,7 @@ import { TosComponent } from './info/tos/tos.component';
 import { UnknownHomeComponent } from './home/unknown-home/unknown-home.component';
 import { CorporationHomeComponent } from './home/corporation-home/corporation-home.component';
 import { ApplicantHomeComponent } from './home/applicant-home/applicant-home.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,11 @@ import { ApplicantHomeComponent } from './home/applicant-home/applicant-home.com
     NgbModule,
     FormsModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right' //notifications appear on the bottom right of screen
+      
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
