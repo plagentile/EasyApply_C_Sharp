@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RegisterComponent } from './register/register.component';
 import { HumanResourcesComponent } from './hr/human-resources/human-resources.component';
 import { MakeJobComponent } from './hr/make-job/make-job.component';
@@ -17,7 +16,7 @@ import { TosComponent } from './info/tos/tos.component';
 import { UnknownHomeComponent } from './home/unknown-home/unknown-home.component';
 import { CorporationHomeComponent } from './home/corporation-home/corporation-home.component';
 import { ApplicantHomeComponent } from './home/applicant-home/applicant-home.component';
-import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -40,11 +39,7 @@ import { ToastrModule } from 'ngx-toastr';
     NgbModule,
     FormsModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right' //notifications appear on the bottom right of screen
-      
-    })
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
