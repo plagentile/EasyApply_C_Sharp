@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +17,8 @@ import { UnknownHomeComponent } from './home/unknown-home/unknown-home.component
 import { CorporationHomeComponent } from './home/corporation-home/corporation-home.component';
 import { ApplicantHomeComponent } from './home/applicant-home/applicant-home.component';
 import { SharedModule } from './modules/shared.module';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { SharedModule } from './modules/shared.module';
     TosComponent,
     UnknownHomeComponent,
     CorporationHomeComponent,
-    ApplicantHomeComponent
+    ApplicantHomeComponent,
+    TestErrorsComponent
     ],
   imports: [
     BrowserModule,
@@ -41,7 +44,9 @@ import { SharedModule } from './modules/shared.module';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

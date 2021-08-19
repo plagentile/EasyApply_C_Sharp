@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ApplicantHomeComponent } from './home/applicant-home/applicant-home.component';
 import { CorporationHomeComponent } from './home/corporation-home/corporation-home.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
 
   {path: 'about', component:AboutComponent},
   {path: 'tos', component:TosComponent},
+  {path: 'errors', component:TestErrorsComponent},
   {path: '**', component:UnknownHomeComponent, pathMatch: 'full'} //not found, wildcard
 ];
 
