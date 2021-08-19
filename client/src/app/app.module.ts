@@ -19,6 +19,7 @@ import { ApplicantHomeComponent } from './home/applicant-home/applicant-home.com
 import { SharedModule } from './modules/shared.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     UnknownHomeComponent,
     CorporationHomeComponent,
     ApplicantHomeComponent,
-    TestErrorsComponent
+    TestErrorsComponent,
+    NotFoundComponent
     ],
   imports: [
     BrowserModule,
