@@ -16,8 +16,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  register(){
-    this.accountService.register(this.model).subscribe(response =>{
+  registerApplicant(){
+    this.accountService.registerApplicant(this.model).subscribe(response =>{
       console.log(response);
       this.cancel();
     }, error=>{
@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
       this.toastr.error(error.error);
     })
   }
+
 
   cancel(){
     this.cancelRegister.emit(false);

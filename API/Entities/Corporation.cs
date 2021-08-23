@@ -1,9 +1,9 @@
 namespace API.Entities
 {
-    public class Applicant
+    public class Corporation
     {
         public int Id { get; set; }
         public string UserName { get; set; }
-        
+          
     }
 }

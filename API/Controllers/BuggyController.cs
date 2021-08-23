@@ -22,7 +22,7 @@ namespace API.Controllers
 
         
         [HttpGet("not-found")]
-        public ActionResult<Applicant> GetNotFound(){
+        public ActionResult<AppUsers> GetNotFound(){
             var thing = this.dataContext.Users.Find(-1);
 
             if(thing == null){
