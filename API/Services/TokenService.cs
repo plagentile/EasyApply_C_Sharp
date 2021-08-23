@@ -16,7 +16,7 @@ namespace API.Services
         public TokenService(IConfiguration iconfig){
             this.symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(iconfig["TokenKey"]));
         }
-        public string CreateToken(AppUser appUser)
+        public string CreateToken(Applicant appUser)
         {
             var claims = new List<Claim>{
                 new Claim(JwtRegisteredClaimNames.NameId, appUser.UserName)

@@ -19,13 +19,13 @@ namespace API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers(){
+        public async Task<ActionResult<IEnumerable<Applicant>>> GetUsers(){
             return await this.dataContext.Users.ToListAsync();
         }
 
         [Authorize]
         [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetUserById(int id){
+        public async Task<ActionResult<Applicant>> GetUserById(int id){
             return await this.dataContext.Users.FindAsync(id);
         }
     }
