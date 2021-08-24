@@ -17,9 +17,26 @@ namespace API.Services
         private readonly DataContext dataContext;
         private readonly ITokenService itokenService;
 
-        public ApplicantService(DataContext dataContext, ITokenService itokenService){
+        private readonly IAppUsersService appUsersService;
+
+        public ApplicantService(DataContext dataContext, ITokenService itokenService, IAppUsersService appUsersService)
+        {
             this.dataContext = dataContext;
             this.itokenService = itokenService;
+            this.appUsersService = appUsersService;
+        }
+
+        public async Task<UserDto> LoginApplicant(LoginDto loginDto)
+        {
+
+            AppUsers user = await this.appUsersService.UserCanLogin(loginDto);
+            if (user == null) return null;
+
+            return new UserDto{
+                Username = user.UserName,
+                Token = this.itokenService.CreateToken(user),
+                Role = "Applicant"
+            };
         }
 
         public async Task<ActionResult<UserDto>> RegisterApplicant(RegisterDto registerDto)

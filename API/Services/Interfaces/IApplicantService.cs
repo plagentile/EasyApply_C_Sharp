@@ -7,5 +7,7 @@ namespace API.Services.Interfaces
     public interface IApplicantService
     {
         Task<ActionResult<UserDto>> RegisterApplicant(RegisterDto registerDto);
+
+        Task<UserDto> LoginApplicant(LoginDto loginDto);
     }
 }

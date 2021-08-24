@@ -24,5 +24,15 @@ namespace API.Controllers
 
             return await this.applicantService.RegisterApplicant(registerDto);
         }
+
+        [HttpPost("loginApplicant")]
+        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto){
+            
+            UserDto user = await this.applicantService.LoginApplicant(loginDto);
+            if (user == null) return Unauthorized("Invalid Username or Password");
+
+            return user;
+        }
+
     }
 }
