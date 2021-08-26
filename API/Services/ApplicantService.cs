@@ -16,7 +16,6 @@ namespace API.Services
         
         private readonly DataContext dataContext;
         private readonly ITokenService itokenService;
-
         private readonly IAppUsersService appUsersService;
 
         public ApplicantService(DataContext dataContext, ITokenService itokenService, IAppUsersService appUsersService)
@@ -28,7 +27,6 @@ namespace API.Services
 
         public async Task<UserDto> LoginApplicant(LoginDto loginDto)
         {
-
             AppUsers user = await this.appUsersService.UserCanLogin(loginDto);
             if (user == null) return null;
 
