@@ -5,14 +5,8 @@ namespace API.Entities
     [Table("Applicant")]
     public class Applicant
     {
-        public enum ApplicantGender{
-            Undisclosed,
-            Male,
-            Female,
-            Other
-        }
-
         public Resume ApplicantResume { get; set; }
+       
         public string UserName { get; set; }
 
         public string FirstName { get; set; }
@@ -27,9 +21,9 @@ namespace API.Entities
         
         public string Country { get; set; }
 
-        public int Id { get; set; }
+        public string Gender { get; set; }
 
-        public ApplicantGender Gender { get; set; }
+        public int Id { get; set; }
 
         public bool ApplicantHasDisability { get; set; }
         
