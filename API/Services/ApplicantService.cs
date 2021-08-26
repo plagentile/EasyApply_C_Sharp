@@ -16,18 +16,18 @@ namespace API.Services
         
         private readonly DataContext dataContext;
         private readonly ITokenService itokenService;
-        private readonly IAppUsersService appUsersService;
+        private readonly IUsersService usersService;
 
-        public ApplicantService(DataContext dataContext, ITokenService itokenService, IAppUsersService appUsersService)
+        public ApplicantService(DataContext dataContext, ITokenService itokenService, IUsersService usersService)
         {
             this.dataContext = dataContext;
             this.itokenService = itokenService;
-            this.appUsersService = appUsersService;
+            this.usersService = usersService;
         }
 
         public async Task<UserDto> LoginApplicant(LoginDto loginDto)
         {
-            AppUsers user = await this.appUsersService.UserCanLogin(loginDto);
+            Users user = await this.usersService.UserCanLogin(loginDto);
             if (user == null) return null;
 
             return new UserDto{
@@ -41,7 +41,7 @@ namespace API.Services
         {
             using var hmac = new HMACSHA512();
 
-            var user = new AppUsers
+            var user = new Users
             {
                 UserName = registerDto.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),

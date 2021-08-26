@@ -16,10 +16,10 @@ namespace API.Services
         public TokenService(IConfiguration iconfig){
             this.symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(iconfig["TokenKey"]));
         }
-        public string CreateToken(AppUsers appUser)
+        public string CreateToken(Users user)
         {
             var claims = new List<Claim>{
-                new Claim(JwtRegisteredClaimNames.NameId, appUser.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
             };
 
             var creds = new SigningCredentials(this.symmetricSecurityKey, SecurityAlgorithms.HmacSha512Signature);

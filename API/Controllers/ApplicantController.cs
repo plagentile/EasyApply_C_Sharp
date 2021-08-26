@@ -9,16 +9,16 @@ namespace API.Controllers
     {
 
         private readonly IApplicantService applicantService;
-        private readonly IAppUsersService appUserService;
+        private readonly IUsersService userService;
 
-        public ApplicantController(IApplicantService applicantService, IAppUsersService appUserService){
+        public ApplicantController(IApplicantService applicantService, IUsersService userService){
             this.applicantService = applicantService;
-            this.appUserService = appUserService;
+            this.userService = userService;
         }
 
         [HttpPost("registerApplicant")]
         public async Task<ActionResult<UserDto>> RegisterApplicant(RegisterDto registerDto){
-            if (await this.appUserService.UserExists(registerDto.Username)){
+            if (await this.userService.UserExists(registerDto.Username)){
                 return BadRequest("Username is taken");
             }
 

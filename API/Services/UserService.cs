@@ -10,20 +10,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Services
 {
-    public class AppUserService : IAppUsersService
+    public class UserService : IUsersService
     {
         
         private readonly DataContext dataContext;
 
         private readonly ITokenService itokenService;
 
-        public AppUserService(DataContext dataContext, ITokenService itokenService)
+        public UserService(DataContext dataContext, ITokenService itokenService)
         {
             this.dataContext = dataContext;
             this.itokenService = itokenService;
         }
 
-        public async Task<AppUsers> GetUser(LoginDto loginDto){
+        public async Task<Users> GetUser(LoginDto loginDto){
             return  await this.dataContext.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
         }
 
@@ -31,9 +31,9 @@ namespace API.Services
             return await this.dataContext.Users.AnyAsync(user => user.UserName == username.ToLower());
         }
 
-        public async Task<AppUsers> UserCanLogin(LoginDto loginDto){
+        public async Task<Users> UserCanLogin(LoginDto loginDto){
 
-            AppUsers user = await this.GetUser(loginDto);
+            Users user = await this.GetUser(loginDto);
             if (user == null) return null;
 
             using var hmac = new HMACSHA512(user.PasswordSalt);

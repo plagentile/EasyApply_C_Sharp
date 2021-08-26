@@ -13,7 +13,7 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration iConfig){
             
             services.AddScoped<IApplicantService, ApplicantService>();
-            services.AddScoped<IAppUsersService, AppUserService>();
+            services.AddScoped<IUsersService, UserService>();
             services.AddScoped<ITokenService, TokenService>();
             
             services.AddDbContext<DataContext>(options => 

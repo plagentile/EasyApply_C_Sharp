@@ -4,10 +4,10 @@ using API.Entities;
 
 namespace API.Services.Interfaces
 {
-    public interface IAppUsersService{
+    public interface IUsersService{
         Task<bool> UserExists(string username);
 
-        Task<AppUsers> GetUser(LoginDto loginDto);
-        Task<AppUsers> UserCanLogin(LoginDto loginDto);
+        Task<Users> GetUser(LoginDto loginDto);
+        Task<Users> UserCanLogin(LoginDto loginDto);
     }
 }
