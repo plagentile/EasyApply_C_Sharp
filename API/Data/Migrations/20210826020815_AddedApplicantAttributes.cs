@@ -7,6 +7,19 @@ namespace API.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Corporation",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserName = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Corporation", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Resume",
                 columns: table => new
                 {
@@ -20,7 +33,7 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Applicants",
+                name: "Applicant",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -40,9 +53,9 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Applicants", x => x.Id);
+                    table.PrimaryKey("PK_Applicant", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Applicants_Resume_ApplicantResumeId",
+                        name: "FK_Applicant_Resume_ApplicantResumeId",
                         column: x => x.ApplicantResumeId,
                         principalTable: "Resume",
                         principalColumn: "Id",
@@ -50,15 +63,18 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Applicants_ApplicantResumeId",
-                table: "Applicants",
+                name: "IX_Applicant_ApplicantResumeId",
+                table: "Applicant",
                 column: "ApplicantResumeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Applicants");
+                name: "Applicant");
+
+            migrationBuilder.DropTable(
+                name: "Corporation");
 
             migrationBuilder.DropTable(
                 name: "Resume");

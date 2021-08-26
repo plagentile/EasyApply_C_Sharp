@@ -2,10 +2,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Entities
 {
-    [Table("Applicants")]
+    [Table("Applicant")]
     public class Applicant
     {
-
         public enum ApplicantGender{
             Undisclosed,
             Male,

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210826015717_AddedApplicantAttributes")]
+    [Migration("20210826020815_AddedApplicantAttributes")]
     partial class AddedApplicantAttributes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,7 +87,21 @@ namespace API.Data.Migrations
 
                     b.HasIndex("ApplicantResumeId");
 
-                    b.ToTable("Applicants");
+                    b.ToTable("Applicant");
+                });
+
+            modelBuilder.Entity("API.Entities.Corporation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Corporation");
                 });
 
             modelBuilder.Entity("API.Entities.Resume", b =>

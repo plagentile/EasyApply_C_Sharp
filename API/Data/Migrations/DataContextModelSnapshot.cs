@@ -85,7 +85,21 @@ namespace API.Data.Migrations
 
                     b.HasIndex("ApplicantResumeId");
 
-                    b.ToTable("Applicants");
+                    b.ToTable("Applicant");
+                });
+
+            modelBuilder.Entity("API.Entities.Corporation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Corporation");
                 });
 
             modelBuilder.Entity("API.Entities.Resume", b =>
