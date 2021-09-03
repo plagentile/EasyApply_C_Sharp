@@ -1,5 +1,6 @@
 using API.Data;
 using API.Interfaces;
+using API.Interfaces.Repository;
 using API.Services;
 using API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration iConfig){
             
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IApplicantService, ApplicantService>();
             services.AddScoped<IUsersService, UserService>();
             services.AddScoped<ITokenService, TokenService>();
