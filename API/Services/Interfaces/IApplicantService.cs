@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTOs;
-using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Services.Interfaces
@@ -12,6 +11,6 @@ namespace API.Services.Interfaces
 
         Task<UserDto> LoginApplicant(LoginDto loginDto);
 
-        Task<IEnumerable<Applicant>> GetApplicants();
+        Task<IEnumerable<ApplicantDto>> GetApplicantsMappedAsDto();
     }
 }

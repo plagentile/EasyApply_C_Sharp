@@ -37,9 +37,7 @@ namespace API.Controllers
 
         [HttpGet]
         public async Task<ActionResult<ApplicantDto>> GetApplicants(){
-            var applicants =  this.applicantService.GetApplicants();
-
-            return  this.mapper.Map<ApplicantDto>(applicants);
+            return await this.applicantService.GetApplicantsMappedAsDto();
         }
     }
 }

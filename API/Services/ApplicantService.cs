@@ -8,6 +8,7 @@ using API.Entities;
 using API.Interfaces;
 using API.Interfaces.Repository;
 using API.Services.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Services
@@ -20,17 +21,21 @@ namespace API.Services
         private readonly ITokenService itokenService;
         private readonly IUsersService usersService;
         private readonly IApplicantRepository applicantRepository;
+        private readonly IMapper mapper;
 
-        public ApplicantService(DataContext dataContext, ITokenService itokenService, IUsersService usersService)
+        public ApplicantService(DataContext dataContext, ITokenService itokenService, IUsersService usersService, IMapper mapper, IApplicantRepository applicantRepository)
         {
             this.dataContext = dataContext;
             this.itokenService = itokenService;
             this.usersService = usersService;
+            this.mapper = mapper;
+            this.applicantRepository = applicantRepository;
         }
 
-        public async Task<IEnumerable<Applicant>> GetApplicants()
+        public async  Task<IEnumerable<ApplicantDto>> GetApplicantsMappedAsDto()
         {
-            return await this.applicantRepository.GetApplicantsAsync();
+            var applicants  = await this.applicantRepository.GetApplicantsAsync();       
+            return  this.mapper.Map<IEnumerable<ApplicantDto>>(applicants);
         }
 
         public async Task<UserDto> LoginApplicant(LoginDto loginDto)
