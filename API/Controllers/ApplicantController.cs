@@ -39,5 +39,7 @@ namespace API.Controllers
         public async Task<ActionResult<ApplicantDto>> GetApplicants(){
             var applicants =  this.applicantService.GetApplicants();
 
-            return 
+            return  this.mapper.Map<ApplicantDto>(applicants);
         }
+    }
+}

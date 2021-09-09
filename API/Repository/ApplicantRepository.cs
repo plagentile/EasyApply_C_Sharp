@@ -23,7 +23,7 @@ namespace API.Data
             return await this.dataContext.Applicants.SingleOrDefaultAsync(x => x.UserName == username);
         }
 
-        public async Task<IEnumerable<Applicant>> GetUsersAsync()
+        public async Task<IEnumerable<Applicant>> GetApplicantsAsync()
         {
             return await this.dataContext.Applicants.ToListAsync();
         }

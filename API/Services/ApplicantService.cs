@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -5,6 +6,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using API.Interfaces.Repository;
 using API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,12 +19,18 @@ namespace API.Services
         private readonly DataContext dataContext;
         private readonly ITokenService itokenService;
         private readonly IUsersService usersService;
+        private readonly IApplicantRepository applicantRepository;
 
         public ApplicantService(DataContext dataContext, ITokenService itokenService, IUsersService usersService)
         {
             this.dataContext = dataContext;
             this.itokenService = itokenService;
             this.usersService = usersService;
+        }
+
+        public async Task<IEnumerable<Applicant>> GetApplicants()
+        {
+            return await this.applicantRepository.GetApplicantsAsync();
         }
 
         public async Task<UserDto> LoginApplicant(LoginDto loginDto)

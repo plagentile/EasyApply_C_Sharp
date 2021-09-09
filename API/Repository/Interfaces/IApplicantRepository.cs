@@ -10,7 +10,7 @@ namespace API.Interfaces.Repository
 
         Task<bool> SaveAllAsync();
 
-        Task<IEnumerable<Applicant>> GetUsersAsync();
+        Task<IEnumerable<Applicant>> GetApplicantsAsync();
 
         Task<Applicant> GetApplicantByIdAsync(int id);
 
