@@ -15,6 +15,7 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration iConfig){
             
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IApplicantRepository, ApplicantRepository>();
             services.AddScoped<IApplicantService, ApplicantService>();
             services.AddScoped<IUsersService, UserService>();
             services.AddScoped<ITokenService, TokenService>();

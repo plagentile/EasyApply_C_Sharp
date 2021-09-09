@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Services.Interfaces;
@@ -34,10 +35,9 @@ namespace API.Controllers
             return user;
         }
 
-
         [HttpGet]
-        public async Task<ActionResult<ApplicantDto>> GetApplicants(){
-            return await this.applicantService.GetApplicantsMappedAsDto();
+        public async Task<ActionResult<IEnumerable<ApplicantDto>>> GetApplicants(){
+            return Ok(await this.applicantService.GetApplicantsMappedAsDto());
         }
     }
 }
