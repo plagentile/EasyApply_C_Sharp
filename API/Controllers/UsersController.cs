@@ -1,30 +1,38 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using API.Entities;
+using API.DTOs;
 using API.Interfaces.Repository;
-using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    
+
     public class UsersController : BaseApiController
     {
-       
-        private readonly IUserRepository userRepository;
 
-        public UsersController(IUserRepository userRepository){
+        private readonly IUserRepository userRepository;
+        private readonly IMapper mapper;
+
+        public UsersController(IUserRepository userRepository, IMapper mapper)
+        {
+            this.mapper = mapper;
             this.userRepository = userRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> GetUsers(){
-            return Ok(await this.userRepository.GetUsersAsync());
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
+        {
+            var users = await this.userRepository.GetUsersAsync();
+            var usersToDto = mapper.Map<IEnumerable<UserDto>>(users);
+            return Ok(usersToDto);
         }
 
         [HttpGet("{username}")]
-        public async Task<ActionResult<Users>> GetUserById(string username){
-            return await this.userRepository.GetUserByUsername(username);
+        public async Task<ActionResult<UserDto>> GetUserById(string username)
+        {
+            var user = await this.userRepository.GetUserByUsername(username);
+            return this.mapper.Map<UserDto>(user);
         }
     }
 }

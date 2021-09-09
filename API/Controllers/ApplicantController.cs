@@ -33,5 +33,11 @@ namespace API.Controllers
 
             return user;
         }
-    }
-}
+
+
+        [HttpGet]
+        public async Task<ActionResult<ApplicantDto>> GetApplicants(){
+            var applicants =  this.applicantService.GetApplicants();
+
+            return 
+        }

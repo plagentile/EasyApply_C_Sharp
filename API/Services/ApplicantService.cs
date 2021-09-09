@@ -27,6 +27,8 @@ namespace API.Services
 
         public async Task<UserDto> LoginApplicant(LoginDto loginDto)
         {
+
+            /*Login needs to be agnostic or at least know what is going over the wire*/
             Users user = await this.usersService.UserCanLogin(loginDto);
             if (user == null) return null;
 
