@@ -21,6 +21,7 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { ApplicantListComponent } from './applicant/applicant-list/applicant-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     ApplicantHomeComponent,
     TestErrorsComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    ApplicantListComponent
     ],
   imports: [
     BrowserModule,
