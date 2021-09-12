@@ -23,7 +23,7 @@ namespace API.Data
             {
                 Users users = new Users();
 
-                users.UserName = "username_" + x;
+                users.UserName = "a_username_" + x;
                 users.Role = "Applicant";
 
                 using var hmac = new HMACSHA512();
@@ -41,9 +41,9 @@ namespace API.Data
                 Applicant applicant = new Applicant();
                 applicant.ApplicantResume = new Resume();
 
-                applicant.UserName = "username_" + x;
-                applicant.FirstName = "FirstName_" + x;
-                applicant.LastName = "LastName_" + x;
+                applicant.UserName = "a_username_" + x;
+                applicant.FirstName = "a_firstName_" + x;
+                applicant.LastName = "a_lastName_" + x;
                 applicant.Email = applicant.FirstName + "@service.com";
                 applicant.PhoneNumber = "000-000-0000"; //fix later
                 applicant.City = "City_" + x;
