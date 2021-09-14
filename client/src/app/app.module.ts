@@ -22,6 +22,7 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { ApplicantListComponent } from './applicant/applicant-list/applicant-list.component';
+import { CorporateListsComponent } from './corporate/corporate-lists/corporate-lists.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ApplicantListComponent } from './applicant/applicant-list/applicant-lis
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    ApplicantListComponent
+    ApplicantListComponent,
+    CorporateListsComponent
     ],
   imports: [
     BrowserModule,
