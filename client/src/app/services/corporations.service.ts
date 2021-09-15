@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Applicant } from '../models/applicant';
+import { Corporation } from '../models/corporation';
 
 
 const httpOptions = {
@@ -14,18 +14,16 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class ApplicantsService {
+
+export class CorporationsService {
 
   baseUrl : string = environment.apiUrl;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { 
   }
 
-  getApplicants() {
-    return this.http.get<Applicant[]>(this.baseUrl + 'applicant', httpOptions);
+  getCorporations(){
+    return this.http.get<Corporation[]>(this.baseUrl + 'corporate', httpOptions);
   }
 
-  getApplicant(username : string) {
-    return this.http.get<Applicant>(this.baseUrl + 'applicant' +username, httpOptions);
-  }
 }

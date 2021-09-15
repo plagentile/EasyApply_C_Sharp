@@ -57,6 +57,16 @@ namespace API.Data
                 dataContext.Applicants.Add(applicant);
             }
 
+
+            //Build Corporations
+            for(int x = 0 ; x < 10; x++)
+            {
+                Corporation corporation = new Corporation();
+                corporation.Id = x;
+                corporation.UserName = "c_username_" + x;
+                dataContext.Corporations.Add(corporation);
+            }
+
             await dataContext.SaveChangesAsync();
         }
     }

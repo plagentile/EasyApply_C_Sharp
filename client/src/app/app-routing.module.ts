@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ApplicantListComponent } from './applicant/applicant-list/applicant-list.component';
+import { CorporateListsComponent } from './corporate/corporate-lists/corporate-lists.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
@@ -32,9 +33,11 @@ const routes: Routes = [
   {path: 'about', component:AboutComponent},
   {path: 'tos', component:TosComponent},
   {path: 'lists', component:ApplicantListComponent},
+  {path: 'clists', component:CorporateListsComponent},
   {path: 'errors', component:TestErrorsComponent},
   {path: 'not-found', component:NotFoundComponent},
   {path: 'server-error', component:ServerErrorComponent},
+
   {path: '**', component:NotFoundComponent, pathMatch: 'full'} //not found, wildcard
 ];
 

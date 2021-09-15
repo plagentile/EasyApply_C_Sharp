@@ -1,7 +1,8 @@
 using API.Data;
 using API.HelperClasses;
-using API.Interfaces;
 using API.Interfaces.Repository;
+using API.Repository;
+using API.Repository.Interfaces;
 using API.Services;
 using API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,12 @@ namespace API.Extensions
             
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IApplicantRepository, ApplicantRepository>();
+            services.AddScoped<ICorporateRepository, CorporationRepository>();
+
+            services.AddScoped<ICorporateService, CorporationService>();
             services.AddScoped<IApplicantService, ApplicantService>();
             services.AddScoped<IUsersService, UserService>();
-            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<Interfaces.ITokenService, TokenService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             
             services.AddDbContext<DataContext>(options => 
