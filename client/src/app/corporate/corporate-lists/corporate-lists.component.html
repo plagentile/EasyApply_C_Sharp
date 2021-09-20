@@ -5,8 +5,8 @@
             <h2 class="text-center">Search Companies By Name</h2>
         </div>
         <form class="d-flex justify-content-center flex-wrap" method="post">
-            <div class="mb-3"><input class="form-control" type="text" name="companyNameSearch" placeholder="Search Company By Name"></div>
-            <div class="mb-3"><button class="btn btn-primary niceBtn"  type="submit">Search</button></div>
+            <div class="mb-3"><input class="form-control" type="text" id= "username" name="username" #username placeholder="Search Company By Name"></div>
+            <div class="mb-3"><button class="btn btn-primary niceBtn"  type="submit" (click)="getCorporationsWithNameLike(username.value)">Search</button></div>
         </form>
     </div>
 </section>

@@ -10,7 +10,7 @@ import { CorporationsService } from 'src/app/services/corporations.service';
 export class CorporateListsComponent implements OnInit {
 
   corporations: Corporation[];
-
+  
   constructor(private corporateService : CorporationsService) { }
 
   ngOnInit(): void {
@@ -23,5 +23,12 @@ export class CorporateListsComponent implements OnInit {
     {
       this.corporations = corporations;
     });
+  }
+
+  getCorporationsWithNameLike(corporateName : string){
+    this.corporateService.getCorporationsWithNameLike(corporateName).subscribe(likeCorporations =>
+      {
+        this.corporations = likeCorporations;
+      });
   }
  }

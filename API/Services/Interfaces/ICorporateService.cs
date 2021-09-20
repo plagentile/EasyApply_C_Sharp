@@ -6,6 +6,7 @@ namespace API.Services.Interfaces
 {
     public interface ICorporateService
     {
-         Task<IEnumerable<CorporateDto>> GetCorporationsMappedAsDto();
+        Task<IEnumerable<CorporateDto>> GetCorporationsMappedAsDto();
+        Task<IEnumerable<CorporateDto>> GetCorporationsWithNameLike(string corporateName);
     }
 }

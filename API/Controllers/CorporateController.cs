@@ -19,5 +19,10 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<CorporateDto>>> GetCorporations(){
             return Ok(await this.corporateService.GetCorporationsMappedAsDto());
         }
+
+        [HttpGet("{username}")]
+        public async Task<ActionResult<IEnumerable<CorporateDto>>> GetCorporationsWithUsernamesLike(string username){
+            return Ok(await this.corporateService.GetCorporationsWithNameLike(username));
+        }
     }
 }

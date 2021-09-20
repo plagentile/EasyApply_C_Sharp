@@ -26,4 +26,9 @@ export class CorporationsService {
     return this.http.get<Corporation[]>(this.baseUrl + 'corporate', httpOptions);
   }
 
+  getCorporationsWithNameLike(corporateName : string){
+    console.log('Attempting to reach')
+    return this.http.get<Corporation[]>(this.baseUrl + 'corporate/' + corporateName, httpOptions);
+  }
+
 }

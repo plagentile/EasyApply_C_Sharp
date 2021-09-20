@@ -9,6 +9,7 @@ namespace API.Repository.Interfaces
          
         Task<CorporateDto> GetCorporateDtoByUsername(string username);
         Task<IEnumerable<CorporateDto>> GetCorporationsAsDtos();
+        Task<IEnumerable<CorporateDto>> GetCorporationsAsDtosWithNameLike(string corporateName);
 
     }
 }

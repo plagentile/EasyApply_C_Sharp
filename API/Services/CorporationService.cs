@@ -18,5 +18,10 @@ namespace API.Services.Interfaces
         {
             return await this.corporateRepository.GetCorporationsAsDtos();
         }
+
+        public async Task<IEnumerable<CorporateDto>> GetCorporationsWithNameLike(string corporateName)
+        {
+            return await this.corporateRepository.GetCorporationsAsDtosWithNameLike(corporateName);
+        }
     }
 }
