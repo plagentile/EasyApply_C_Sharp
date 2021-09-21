@@ -21,21 +21,17 @@ namespace API.Repository
             this.dataContext = dataContext;
         }
 
-        public async Task<CorporateDto> GetCorporateDtoByUsername(string username)
-        {
+        public async Task<CorporateDto> GetCorporateDtoByUsername(string username){
             return await this.dataContext.Corporations
             .Where(x => x.UserName == username)
             .ProjectTo<CorporateDto>(this.mapper.ConfigurationProvider).SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<CorporateDto>> GetCorporationsAsDtos()
-        {
+        public async Task<IEnumerable<CorporateDto>> GetCorporationsAsDtos(){
             return await this.dataContext.Corporations.ProjectTo<CorporateDto>(this.mapper.ConfigurationProvider).ToListAsync();
         }
 
-        public async Task<IEnumerable<CorporateDto>> GetCorporationsAsDtosWithNameLike(string corporateName)
-        {
-            //add wildcard here : "%"
+        public async Task<IEnumerable<CorporateDto>> GetCorporationsAsDtosWithNameLike(string corporateName){
            return await this.dataContext.Corporations.Where(x => x.UserName.Contains(corporateName)).ProjectTo<CorporateDto>(this.mapper.ConfigurationProvider).ToListAsync();
         }
     }
