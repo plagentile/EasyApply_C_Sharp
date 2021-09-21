@@ -24,6 +24,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { ApplicantListComponent } from './applicant/applicant-list/applicant-list.component';
 import { CorporateListsComponent } from './corporate/corporate-lists/corporate-lists.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { CorporateDetailComponent } from './corporate/corporate-detail/corporate-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     NotFoundComponent,
     ServerErrorComponent,
     ApplicantListComponent,
-    CorporateListsComponent
+    CorporateListsComponent,
+    CorporateDetailComponent
     ],
   imports: [
     BrowserModule,

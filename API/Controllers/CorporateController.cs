@@ -24,5 +24,14 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<CorporateDto>>> GetCorporationsWithUsernamesLike(string username){
             return Ok(await this.corporateService.GetCorporationsWithNameLike(username));
         }
+
+        [HttpGet]
+        [Route("getCorporationByUsername/{username}")]
+        public CorporateDto GetCorporationByUsername(string username){
+            
+            
+            CorporateDto dummy = new CorporateDto{Id = 0, UserName = "CoolUsernameBruh"};
+            return dummy;
+        }
     }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ApplicantListComponent } from './applicant/applicant-list/applicant-list.component';
+import { CorporateDetailComponent } from './corporate/corporate-detail/corporate-detail.component';
 import { CorporateListsComponent } from './corporate/corporate-lists/corporate-lists.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
+      {path: 'corporation/:username', component:CorporateDetailComponent},
       {path:'humanresources', component:HumanResourcesComponent},
       {path:'joblists', component:JobListsComponent},
       {path:'makejob', component:MakeJobComponent},
