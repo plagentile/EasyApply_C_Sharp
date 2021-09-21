@@ -10,6 +10,7 @@ namespace API.HelperClasses
         {
             CreateMap<Applicant, ApplicantDto>();
             CreateMap<Corporation, CorporateDto>();
+            CreateMap<JobPosting, JobPostingDto>();
             CreateMap<Resume, ResumeDto>();
             CreateMap<Users, UserDto>();
         }

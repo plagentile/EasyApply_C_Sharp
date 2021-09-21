@@ -64,7 +64,23 @@ namespace API.Data
                 Corporation corporation = new Corporation();
                 corporation.Id = x;
                 corporation.UserName = "c_username_" + x;
+                corporation.KnownAs = "c_KnownAs_" + x;
+                corporation.BackgroundPhotoURL = "";
+                
+                JobPosting jobPosting = new JobPosting();
+                jobPosting.Id = x *10;
+                jobPosting.PublicId = "Example-Public-Id";
+                jobPosting.Title = "Example-Job-Title";
+                jobPosting.Description = "Example Job Description";
+                jobPosting.Location = "Example Job Location";
+                jobPosting.PostedDate = System.DateTime.Now;
+                jobPosting.Corporation = corporation;
+                jobPosting.CorporationId  = corporation.Id;
+                corporation.Openings.Add(jobPosting);
+                
+                dataContext.JobPostings.Add(jobPosting);
                 dataContext.Corporations.Add(corporation);
+
             }
 
             await dataContext.SaveChangesAsync();

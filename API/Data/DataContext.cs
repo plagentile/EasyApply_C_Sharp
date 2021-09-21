@@ -14,5 +14,7 @@ namespace API.Data
         public DbSet<Applicant> Applicants { get; set; }
 
         public DbSet<Corporation> Corporations { get; set; }
+       
+        public DbSet<JobPosting> JobPostings { get; set; } 
     }
 }
