@@ -8,5 +8,6 @@ namespace API.Services.Interfaces
     {
         Task<IEnumerable<CorporateDto>> GetCorporationsMappedAsDto();
         Task<IEnumerable<CorporateDto>> GetCorporationsWithNameLike(string corporateName);
+        Task<CorporateDto> GetCorporationByUsername(string username);
     }
 }

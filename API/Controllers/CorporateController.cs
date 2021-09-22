@@ -10,9 +10,11 @@ namespace API.Controllers
     {
         
         private readonly ICorporateService corporateService;
+        private readonly IJobPostingService jobPostingService;
 
-        public CorporateController(ICorporateService corporateService){
+        public CorporateController(ICorporateService corporateService, IJobPostingService jobPostingService){
             this.corporateService = corporateService;
+            this.jobPostingService = jobPostingService;
         }
 
         [HttpGet]
@@ -27,11 +29,14 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("getCorporationByUsername/{username}")]
-        public CorporateDto GetCorporationByUsername(string username){
-            
-            
-            CorporateDto dummy = new CorporateDto{Id = 0, UserName = "CoolUsernameBruh"};
-            return dummy;
+        public async Task<ActionResult<CorporateDto>> GetCorporationByUsername(string username){ 
+            return Ok(await this.corporateService.GetCorporationByUsername(username));
+        }
+
+        [HttpGet]
+        [Route("getJobPostingsByCorporateId/{id}")]
+        public async Task<ActionResult<IEnumerable<JobPostingDto>>> GetJobPostingsByCorporateId(int id){
+            return Ok(await this.jobPostingService.GetJobPostingsByCorporateId(id));
         }
     }
 }

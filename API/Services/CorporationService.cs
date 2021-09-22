@@ -14,6 +14,11 @@ namespace API.Services.Interfaces
             this.corporateRepository = corporateRepository;
         }
 
+        public async Task<CorporateDto> GetCorporationByUsername(string username)
+        {
+            return await this.corporateRepository.GetCorporationByUsername(username);
+        }
+
         public async Task<IEnumerable<CorporateDto>> GetCorporationsMappedAsDto()
         {
             return await this.corporateRepository.GetCorporationsAsDtos();

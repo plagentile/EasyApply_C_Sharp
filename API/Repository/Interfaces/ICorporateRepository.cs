@@ -7,7 +7,7 @@ namespace API.Repository.Interfaces
     public interface ICorporateRepository
     {
          
-        Task<CorporateDto> GetCorporateDtoByUsername(string username);
+        Task<CorporateDto> GetCorporationByUsername(string username);
         Task<IEnumerable<CorporateDto>> GetCorporationsAsDtos();
         Task<IEnumerable<CorporateDto>> GetCorporationsAsDtosWithNameLike(string corporateName);
 

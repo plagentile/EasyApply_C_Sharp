@@ -16,13 +16,18 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration iConfig){
             
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IApplicantRepository, ApplicantRepository>();
-            services.AddScoped<ICorporateRepository, CorporationRepository>();
-
-            services.AddScoped<ICorporateService, CorporationService>();
-            services.AddScoped<IApplicantService, ApplicantService>();
             services.AddScoped<IUsersService, UserService>();
             services.AddScoped<Interfaces.ITokenService, TokenService>();
+
+            services.AddScoped<IApplicantRepository, ApplicantRepository>();
+            services.AddScoped<IApplicantService, ApplicantService>();
+
+            services.AddScoped<IJobPostingService, JobPostingService>();
+            services.AddScoped<IJobPostingRepository, JobPostingRepository>();
+
+            services.AddScoped<ICorporateRepository, CorporationRepository>();
+            services.AddScoped<ICorporateService, CorporationService>();
+     
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             
             services.AddDbContext<DataContext>(options => 

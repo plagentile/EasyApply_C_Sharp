@@ -73,7 +73,7 @@ namespace API.Data
                 jobPosting.Title = "Example-Job-Title";
                 jobPosting.Description = "Example Job Description";
                 jobPosting.Location = "Example Job Location";
-                jobPosting.PostedDate = System.DateTime.Now;
+                jobPosting.PostedDate = "Add DateTime.toString";
                 jobPosting.Corporation = corporation;
                 jobPosting.CorporationId  = corporation.Id;
                 corporation.Openings.Add(jobPosting);

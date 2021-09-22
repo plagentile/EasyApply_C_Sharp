@@ -12,7 +12,6 @@ namespace API.Repository
 {
     public class CorporationRepository : ICorporateRepository
     {
-
         private readonly IMapper mapper;
         private readonly DataContext dataContext;
 
@@ -21,10 +20,11 @@ namespace API.Repository
             this.dataContext = dataContext;
         }
 
-        public async Task<CorporateDto> GetCorporateDtoByUsername(string username){
-            return await this.dataContext.Corporations
-            .Where(x => x.UserName == username)
-            .ProjectTo<CorporateDto>(this.mapper.ConfigurationProvider).SingleOrDefaultAsync();
+        public async Task<CorporateDto> GetCorporationByUsername(string username)
+        {
+            return await this.dataContext.Corporations.Where(x=> x.UserName == username)?.
+            ProjectTo<CorporateDto>(this.mapper.ConfigurationProvider)?.
+            SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<CorporateDto>> GetCorporationsAsDtos(){

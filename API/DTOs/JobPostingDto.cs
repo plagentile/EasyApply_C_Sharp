@@ -8,6 +8,6 @@ namespace API.DTOs
         public string Title { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
-        public DateTime PostedDate { get; set; }
+        public string PostedDate { get; set; }
     }
 }
