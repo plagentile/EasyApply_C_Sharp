@@ -6,7 +6,6 @@ using API.DTOs;
 using API.Repository.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Repository
@@ -22,7 +21,7 @@ namespace API.Repository
             this.mapper = mapper;
         }
 
-        public async Task<ActionResult<IEnumerable<JobPostingDto>>> GetJobPostingsByCorprateId(int corporateId){
+        public async Task<IEnumerable<JobPostingDto>> GetJobPostingsByCorprateId(int corporateId){
             return await this.dataContext.JobPostings.Where(posting => posting.CorporationId == corporateId).ProjectTo<JobPostingDto>(this.mapper.ConfigurationProvider).ToListAsync();
         }
     }

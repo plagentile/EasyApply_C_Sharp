@@ -15,7 +15,7 @@ namespace API.Services
             this.jobPostingRepository = jobPostingRepository;
         }
 
-        public async Task<ActionResult<IEnumerable<JobPostingDto>>> GetJobPostingsByCorporateId(int corporateId){
+        public async Task<IEnumerable<JobPostingDto>> GetJobPostingsByCorporateId(int corporateId){
             return await this.jobPostingRepository.GetJobPostingsByCorprateId(corporateId);
         }
     }
