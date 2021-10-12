@@ -31,7 +31,21 @@ namespace API.Data
                 users.PasswordSalt = hmac.Key;
 
                 dataContext.Users.Add(users);               
-            }    
+            }
+
+            for(int x = 0; x < 10; x++)
+            {
+                Users users = new Users();
+
+                users.UserName = "c_username_" + x;
+                users.Role = "Corporation";
+
+                using var hmac = new HMACSHA512();
+                users.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("!!Password"));
+                users.PasswordSalt = hmac.Key;
+
+                dataContext.Users.Add(users);               
+            }     
 
 
 
@@ -76,8 +90,7 @@ namespace API.Data
                 jobPosting.PostedDate = "Add DateTime.toString";
                 jobPosting.Corporation = corporation;
                 jobPosting.CorporationId  = corporation.Id;
-                corporation.Openings.Add(jobPosting);
-                
+                      
                 dataContext.JobPostings.Add(jobPosting);
                 dataContext.Corporations.Add(corporation);
 
