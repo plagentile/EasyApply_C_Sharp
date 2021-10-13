@@ -35,14 +35,7 @@ namespace API.Services
 
             Users user = await this.GetUser(loginDto);
             if (user == null) return null;
-
-            using var hmac = new HMACSHA512(user.PasswordSalt);
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
-
-            for (int x = 0; x < computedHash.Length; x++){
-                if (computedHash[x] != user.PasswordHash[x]) return null;
-            }
-            
+                        
             return user;
         }
 

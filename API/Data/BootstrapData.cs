@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using API.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -25,11 +23,6 @@ namespace API.Data
 
                 users.UserName = "a_username_" + x;
                 users.Role = "Applicant";
-
-                using var hmac = new HMACSHA512();
-                users.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("!!Password"));
-                users.PasswordSalt = hmac.Key;
-
                 dataContext.Users.Add(users);               
             }
 
@@ -39,10 +32,6 @@ namespace API.Data
 
                 users.UserName = "c_username_" + x;
                 users.Role = "Corporation";
-
-                using var hmac = new HMACSHA512();
-                users.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("!!Password"));
-                users.PasswordSalt = hmac.Key;
 
                 dataContext.Users.Add(users);               
             }     

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
@@ -8,7 +6,6 @@ using API.Entities;
 using API.Interfaces;
 using API.Interfaces.Repository;
 using API.Services.Interfaces;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Services
@@ -50,13 +47,10 @@ namespace API.Services
 
         public async Task<ActionResult<UserDto>> RegisterApplicant(RegisterDto registerDto)
         {
-            using var hmac = new HMACSHA512();
-
+         
             var user = new Users
             {
                 UserName = registerDto.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key,
                 Role = "Applicant"
             };
 
