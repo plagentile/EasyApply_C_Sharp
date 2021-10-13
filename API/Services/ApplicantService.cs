@@ -51,7 +51,6 @@ namespace API.Services
             var user = new Users
             {
                 UserName = registerDto.Username.ToLower(),
-                Role = "Applicant"
             };
 
             this.dataContext.Add(user);

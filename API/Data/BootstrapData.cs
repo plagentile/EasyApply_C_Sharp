@@ -20,23 +20,23 @@ namespace API.Data
             for(int x = 0; x < 10; x++)
             {
                 Users users = new Users();
-
                 users.UserName = "a_username_" + x;
-                users.Role = "Applicant";
+                users.Email = users.UserName + "@service.com";
+                users.PhoneNumber = "000-000-0000"; //fix later
+                //Add in role
+
                 dataContext.Users.Add(users);               
             }
 
             for(int x = 0; x < 10; x++)
             {
                 Users users = new Users();
-
                 users.UserName = "c_username_" + x;
-                users.Role = "Corporation";
+                
+                //Add in role
 
                 dataContext.Users.Add(users);               
             }     
-
-
 
             //Build applicants
             for(int x = 0 ; x < 10; x++)
@@ -47,8 +47,6 @@ namespace API.Data
                 applicant.UserName = "a_username_" + x;
                 applicant.FirstName = "a_firstName_" + x;
                 applicant.LastName = "a_lastName_" + x;
-                applicant.Email = applicant.FirstName + "@service.com";
-                applicant.PhoneNumber = "000-000-0000"; //fix later
                 applicant.City = "City_" + x;
                 applicant.Country = "Country_" + x;
                 applicant.Gender = "Option";
