@@ -19,7 +19,7 @@ namespace API.Data
             return await this.dataContext.Users.FindAsync(id);
         }
 
-        public async Task<Users> GetUserByUsername(string username){
+        public async Task<Users> GetUserByUserName(string username){
             return await this.dataContext.Users.SingleOrDefaultAsync(x => x.UserName == username);
         }
 
@@ -33,6 +33,10 @@ namespace API.Data
 
         public void UpdateUser(Users user){
             this.dataContext.Entry(user).State = EntityState.Modified;
+        }
+
+        public async Task<bool> UserExists(string username){
+           return await this.dataContext.Users.AnyAsync(user => user.UserName == username.ToLower());
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using API.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -8,34 +9,36 @@ namespace API.Data
     {
         
         BootstrapData(){
-
         }
 
-        public static async Task seedData(DataContext dataContext)
+        public static async Task seedData(UserManager<Users> userManager, DataContext dataContext)
         {
 
-            if(await dataContext.Users.AnyAsync()) return;
+            if(await userManager.Users.AnyAsync()) return;
 
             //Build AppUsers
             for(int x = 0; x < 10; x++)
             {
-                Users users = new Users();
-                users.UserName = "a_username_" + x;
-                users.Email = users.UserName + "@service.com";
-                users.PhoneNumber = "000-000-0000"; //fix later
+                Users user = new Users();
+                user.UserName = "a_username_" + x;
+                user.Email = user.UserName + "@service.com";
+                user.PhoneNumber = "000-000-0000"; //fix later
+                
                 //Add in role
 
-                dataContext.Users.Add(users);               
+                await userManager.CreateAsync(user, "!!Password123");           
             }
 
             for(int x = 0; x < 10; x++)
             {
-                Users users = new Users();
-                users.UserName = "c_username_" + x;
+                Users user = new Users();
+                user.UserName = "c_username_" + x;
+                user.Email = user.UserName + "@service.com";
+                user.PhoneNumber = "000-000-0000"; //fix later
                 
                 //Add in role
 
-                dataContext.Users.Add(users);               
+                await userManager.CreateAsync(user, "!!Password123");               
             }     
 
             //Build applicants
@@ -54,7 +57,7 @@ namespace API.Data
                 applicant.ApplicantHasDisability = false;
                 applicant.ApplicantHasWorkAuthorization = true;
                 applicant.ApplicantIsProtectedVeteran = false;
-
+                
                 dataContext.Applicants.Add(applicant);
             }
 
@@ -82,7 +85,6 @@ namespace API.Data
                 dataContext.Corporations.Add(corporation);
 
             }
-
             await dataContext.SaveChangesAsync();
         }
     }
