@@ -8,6 +8,7 @@ namespace API.HelperClasses
     {
         public AutoMapperProfiles()
         {
+            CreateMap<RegisterDto, Users>();
             CreateMap<Applicant, ApplicantDto>();
             CreateMap<Corporation, CorporateDto>();
             CreateMap<JobPosting, JobPostingDto>();

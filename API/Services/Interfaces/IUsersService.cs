@@ -11,5 +11,6 @@ namespace API.Services.Interfaces
         Task<Users> UserCanLogin(LoginDto loginDto);
         Task<Users> GetUserByUsername(string username);
         Task<IEnumerable<Users>> GetUsersAsync();
+        Task<bool> AddNewUser(RegisterDto registerDto);
     }
 }

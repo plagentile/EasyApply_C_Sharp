@@ -16,6 +16,7 @@ namespace API.Data
         private readonly DataContext dataContext;
         private readonly IMapper mapper;
 
+
         public ApplicantRepository(DataContext dataContext, IMapper mapper)
         {
             this.mapper = mapper;

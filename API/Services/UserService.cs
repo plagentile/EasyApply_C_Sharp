@@ -13,8 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Services
 {
-    public class UserService : IUsersService
-    {
+    public class UserService : IUsersService {
         
         private readonly IUserRepository userRepository;
 
@@ -34,9 +33,7 @@ namespace API.Services
         }
 
         public async Task<Users> UserCanLogin(LoginDto loginDto){
-            Users user = await this.GetUser(loginDto);
-            if (user == null) return null;
-                        
+            Users user = await this.GetUser(loginDto);                    
             return user;
         }
         
@@ -46,6 +43,11 @@ namespace API.Services
 
         public async Task<IEnumerable<Users>> GetUsersAsync(){
             return await this.userRepository.GetUsersAsync();
+        }
+
+        public async Task<bool> AddNewUser(RegisterDto registerDto){
+           await this.userRepository.AddUser(registerDto);
+           return await this.UserExists(registerDto.Username);
         }
     }
 }

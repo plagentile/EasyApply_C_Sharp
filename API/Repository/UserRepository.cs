@@ -31,7 +31,7 @@ namespace API.Data
         }
 
         public async Task<IdentityResult> AddUser(RegisterDto registerDto){
-           var user = this.mapper.Map<Users>(registerDto);
+           Users user = this.mapper.Map<Users>(registerDto);
            return await userManager.CreateAsync(user, registerDto.Password);        
         }
     }

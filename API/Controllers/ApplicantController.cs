@@ -30,7 +30,7 @@ namespace API.Controllers
             
             UserDto user = await this.applicantService.LoginApplicant(loginDto);
             if (user == null) return Unauthorized("Invalid Username or Password");
-            return user;
+            return Ok(user);
         }
 
         [HttpGet]
