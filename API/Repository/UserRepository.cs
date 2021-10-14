@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using API.DTOs;
 using API.Entities;
 using API.Interfaces.Repository;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -9,34 +12,27 @@ namespace API.Data
     public class UserRepository : IUserRepository
     {
 
-        private readonly DataContext dataContext;
+        private readonly UserManager<Users> userManager;
+        private readonly SignInManager<Users> signInManager;
+        private readonly IMapper mapper;
 
-        public UserRepository(DataContext dataContext){
-            this.dataContext = dataContext;
-        }
-
-        public async Task<Users> GetUserByIdAsync(int id){
-            return await this.dataContext.Users.FindAsync(id);
+        public UserRepository(UserManager<Users> userManager, SignInManager<Users> signInManager, IMapper mapper){
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.mapper = mapper;
         }
 
         public async Task<Users> GetUserByUserName(string username){
-            return await this.dataContext.Users.SingleOrDefaultAsync(x => x.UserName == username);
+            return await this.userManager.FindByNameAsync(username); 
         }
 
         public async Task<IEnumerable<Users>> GetUsersAsync(){
-            return await this.dataContext.Users.ToListAsync();
+            return await this.userManager.Users.ToListAsync<Users>();
         }
 
-        public async Task<bool> SaveAllAsync(){
-            return await dataContext.SaveChangesAsync() > 0;
-        }
-
-        public void UpdateUser(Users user){
-            this.dataContext.Entry(user).State = EntityState.Modified;
-        }
-
-        public async Task<bool> UserExists(string username){
-           return await this.dataContext.Users.AnyAsync(user => user.UserName == username.ToLower());
+        public async Task<IdentityResult> AddUser(RegisterDto registerDto){
+           var user = this.mapper.Map<Users>(registerDto);
+           return await userManager.CreateAsync(user, registerDto.Password);        
         }
     }
 }

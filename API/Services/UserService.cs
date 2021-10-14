@@ -29,8 +29,8 @@ namespace API.Services
             return  await this.userRepository.GetUserByUserName(loginDto.Username);
         }
 
-        public async Task<bool> UserExists(string username){
-            return await this.userRepository.UserExists(username);
+        public async Task<bool> UserExists(string username){        
+            return await this.userRepository.GetUserByUserName(username) != null;
         }
 
         public async Task<Users> UserCanLogin(LoginDto loginDto){
