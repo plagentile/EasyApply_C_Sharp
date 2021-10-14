@@ -14,14 +14,11 @@ namespace API.Services
     public class ApplicantService : IApplicantService
     {
         
-        private readonly DataContext dataContext;
         private readonly ITokenService itokenService;
         private readonly IUsersService usersService;
         private readonly IApplicantRepository applicantRepository;
 
-        public ApplicantService(DataContext dataContext, ITokenService itokenService, IUsersService usersService, IApplicantRepository applicantRepository)
-        {
-            this.dataContext = dataContext;
+        public ApplicantService(ITokenService itokenService, IUsersService usersService, IApplicantRepository applicantRepository){
             this.itokenService = itokenService;
             this.usersService = usersService;
             this.applicantRepository = applicantRepository;
@@ -45,16 +42,13 @@ namespace API.Services
             };
         }
 
-        public async Task<ActionResult<UserDto>> RegisterApplicant(RegisterDto registerDto)
-        {
+        public async Task<ActionResult<UserDto>> RegisterApplicant(RegisterDto registerDto){
          
-            var user = new Users
-            {
+            var user = new Users{
                 UserName = registerDto.Username.ToLower(),
             };
 
-            this.dataContext.Add(user);
-            await this.dataContext.SaveChangesAsync();
+            await this.applicantRepository.AddApplicant(user);
             
             return new UserDto{
                 Username = user.UserName,

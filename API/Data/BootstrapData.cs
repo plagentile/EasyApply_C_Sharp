@@ -14,6 +14,7 @@ namespace API.Data
         public static async Task seedData(UserManager<Users> userManager, DataContext dataContext)
         {
 
+
             if(await userManager.Users.AnyAsync()) return;
 
             //Build AppUsers

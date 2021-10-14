@@ -22,6 +22,11 @@ namespace API.Data
             this.dataContext = dataContext;
         }
 
+        public async Task AddApplicant(Users user){
+            this.dataContext.Add(user);
+            await this.dataContext.SaveChangesAsync();
+        }
+
         public async Task<Applicant> GetApplicantByIdAsync(int id){
             return await this.dataContext.Applicants.FindAsync(id);
         }

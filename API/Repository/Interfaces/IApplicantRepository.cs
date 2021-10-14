@@ -14,6 +14,6 @@ namespace API.Interfaces.Repository
         Task<Applicant> GetApplicantByUsername(string username);
         Task<ApplicantDto> GetApplicantDtoByUsername(string username);
         Task<IEnumerable<ApplicantDto>> GetApplicantsAsDtos();
-
+        Task AddApplicant(Users user);
     }
 }
