@@ -8,7 +8,6 @@ namespace API.Controllers
 {
     public class ApplicantController : BaseApiController
     {
-
         private readonly IApplicantService applicantService;
         private readonly IUsersService userService;
 
@@ -18,7 +17,9 @@ namespace API.Controllers
         }
 
         [HttpPost("registerApplicant")]
-        public async Task<ActionResult<UserDto>> RegisterApplicant(RegisterDto registerDto){
+        public async Task<ActionResult<UserDto>> RegisterApplicant(RegisterDto registerDto)
+        {
+            //should only be a one liner too much logic here
             if (await this.userService.UserExists(registerDto.Username)){
                 return BadRequest("Username is taken");
             }
